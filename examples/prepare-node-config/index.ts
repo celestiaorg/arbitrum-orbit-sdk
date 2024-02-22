@@ -48,6 +48,7 @@ async function main() {
     validatorPrivateKey: 'INSERT_VALIDATOR_PRIVATE_KEY_HERE',
     parentChainId: parentChain.id,
     parentChainRpcUrl: getRpcUrl(parentChain),
+    authToken: ''
   });
 
   await writeFile('node-config.json', JSON.stringify(nodeConfig, null, 2));

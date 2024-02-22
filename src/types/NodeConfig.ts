@@ -87,6 +87,13 @@ export type NodeConfig = {
     'dangerous': {
       'no-sequencer-coordinator': boolean;
     };
+    'celestia-cfg': {
+      'enable': true;
+      'rpc': string;
+      'tendermint-rpc': string;
+      'namespace-id': string;
+      'auth-token': string;
+    }
   };
   'execution': {
     'forwarding-target': string;

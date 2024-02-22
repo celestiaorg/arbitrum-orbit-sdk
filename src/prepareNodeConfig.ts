@@ -57,6 +57,7 @@ export function prepareNodeConfig({
   validatorPrivateKey,
   parentChainId,
   parentChainRpcUrl,
+  authToken
 }: {
   chainName: string;
   chainConfig: ChainConfig;
@@ -65,6 +66,7 @@ export function prepareNodeConfig({
   validatorPrivateKey: string;
   parentChainId: number;
   parentChainRpcUrl: string;
+  authToken?: string;
 }): NodeConfig {
   if (!validParentChainId(parentChainId)) {
     throw new Error(`[prepareNodeConfig] invalid parent chain id: ${parentChainId}`);
@@ -127,6 +129,13 @@ export function prepareNodeConfig({
       'dangerous': {
         'no-sequencer-coordinator': true,
       },
+      "celestia-cfg": {
+        "enable": true,
+        "rpc": "http://da:26658",
+        "tendermint-rpc": "http://da:26657",
+        "namespace-id": "000008e5f679bf7116cb",
+        "auth-token": authToken || '',
+      }
     },
     'execution': {
       'forwarding-target': '',

@@ -18,8 +18,8 @@ function getNitroNodeImageTag(): string {
   return argv[1];
 }
 
-const nitroNodeTag = getNitroNodeImageTag();
-const nitroNodeImage = `offchainlabs/nitro-node:${nitroNodeTag}`;
+// const nitroNodeTag = getNitroNodeImageTag();
+const nitroNodeImage = 'nitro-node:latest';
 const nitroNodeHelpOutputFile = `${nitroNodeImage.replace('/', '-')}-help.txt`;
 
 console.log(`Using image "${nitroNodeImage}".`);

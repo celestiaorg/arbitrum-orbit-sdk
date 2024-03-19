@@ -33,6 +33,7 @@ function sleep(ms: number = 3_000) {
 }
 
 const arbiscanApiKey = loadApiKey('ARBISCAN_API_KEY');
+const basescan = loadApiKey('BASESCAN_API_KEY');
 const etherscanApiKey = loadApiKey('ETHERSCAN_API_KEY');
 
 const blockExplorerApiUrls: Record<ParentChainId, { url: string; apiKey: string }> = {
@@ -60,6 +61,10 @@ const blockExplorerApiUrls: Record<ParentChainId, { url: string; apiKey: string 
   },
   [arbitrumSepolia.id]: {
     url: 'https://api-sepolia.arbiscan.io/api',
+    apiKey: arbiscanApiKey,
+  },
+  [baseSepolia.id]: {
+    url: 'https://api-sepolia.basescan.org/api',
     apiKey: arbiscanApiKey,
   },
   // local nitro-testnode / fine to omit these as we skip abi fetch
@@ -102,7 +107,6 @@ const contracts: ContractConfig[] = [
       // testnet
       [holesky.id]: '0xB512078282F462Ba104231ad856464Ceb0a7747e',
       [sepolia.id]: '0x78f8B2941ddE5a8A312814Ebd29c2E2A36f25E91',
-      [sepolia.id]: '0xfbd0b034e6305788007f6e0123cc5eae701a5751',
       [arbitrumSepolia.id]: '0x79751B011BCc20F413a2c4E3AF019b6E2a9738B9',
       [baseSepolia.id]: '0x1Bb8ADd5e878b12Fa37756392642eB94C53A1Cf4',
       // local nitro-testnode (on "release" branch with --tokenbridge --l3node --l3-token-bridge flags)
@@ -122,7 +126,6 @@ const contracts: ContractConfig[] = [
       // testnet
       [holesky.id]: '0xac890ED9bC2494C053cE701F138958df95966d94',
       [sepolia.id]: '0xbe2876170971Ed84685d18BC910F891E2B9Adf02',
-      [sepolia.id]: '0x7edb2dfBeEf9417e0454A80c51EE0C034e45a570',
       [arbitrumSepolia.id]: '0xaAe3A04931345Df5AC6e784bB6bDeb29B1fF0286',
       [baseSepolia.id]: '0xAa3b8B63cCCa3c98b948FD1d6eD875d378dE2C6c',
       // local nitro-testnode (on "release" branch with --tokenbridge --l3node --l3-token-bridge flags)

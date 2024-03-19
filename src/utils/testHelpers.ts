@@ -18,7 +18,8 @@ import { CoreContracts } from '../types/CoreContracts';
 
 export type CreateTestRollupParams = {
   deployer: PrivateKeyAccount;
-  batchPoster: Address;
+  batchPosters: Address[];
+  batchPosterManager: Address;
   validators: Address[];
   publicClient: PublicClient;
 };
@@ -32,7 +33,8 @@ export type CreateTestRollupResult = {
 
 export async function createTestRollup({
   deployer,
-  batchPoster,
+  batchPosters,
+  batchPosterManager,
   validators,
   publicClient,
 }: CreateTestRollupParams): Promise<CreateTestRollupResult> {
@@ -55,7 +57,8 @@ export async function createTestRollup({
   const request = await createRollupPrepareTransactionRequest({
     params: {
       config,
-      batchPoster,
+      batchPosters,
+      batchPosterManager,
       validators,
     },
     account: deployer.address,

@@ -42,6 +42,7 @@ it('creates chain config with custom params', () => {
       EnableArbOS: false,
       AllowDebugPrecompiles: true,
       DataAvailabilityCommittee: true,
+      CelestiaDA: true,
       InitialArbOSVersion: 11,
       InitialChainOwner: vitalik,
       GenesisBlockNum: 1,

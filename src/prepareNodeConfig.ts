@@ -172,7 +172,7 @@ export function prepareNodeConfig({
   }
 
   if (chainConfig.arbitrum.CelestiaDA) {
-    config.node['celestia-cfg'] = {
+    config.node!['celestia-cfg'] = {
       "enable": celestiaConfig!.enable,
       "rpc": celestiaConfig!.rpc,
       "tendermint-rpc": celestiaConfig!.tendermint_rpc,

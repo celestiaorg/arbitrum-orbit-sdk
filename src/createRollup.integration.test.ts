@@ -15,14 +15,16 @@ const publicClient = createPublicClient({
 // test inputs
 const testnodeAccounts = getNitroTestnodePrivateKeyAccounts();
 const deployer = testnodeAccounts.deployer;
-const batchPoster = testnodeAccounts.deployer.address;
+const batchPosters = [testnodeAccounts.deployer.address];
+const batchPosterManager = testnodeAccounts.deployer.address;
 const validators = [testnodeAccounts.deployer.address];
 
 describe(`createRollup`, async () => {
   // create test rollup
   const createRollupInformation = await createTestRollup({
     deployer,
-    batchPoster,
+    batchPosters,
+    batchPosterManager,
     validators,
     publicClient,
   });
@@ -31,7 +33,7 @@ describe(`createRollup`, async () => {
     // assert all inputs are correct
     const [arg] = createRollupInformation.transaction.getInputs();
     expect(arg.config).toEqual(createRollupInformation.config);
-    expect(arg.batchPosters).toEqual(batchPoster);
+    expect(arg.batchPosters).toEqual(batchPosters);
     expect(arg.validators).toEqual(validators);
     expect(arg.maxDataSize).toEqual(104_857n);
     expect(arg.nativeToken).toEqual(zeroAddress);

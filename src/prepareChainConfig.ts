@@ -23,6 +23,7 @@ export const defaults = {
     EnableArbOS: true,
     AllowDebugPrecompiles: false,
     DataAvailabilityCommittee: false,
+    CelestiaDa: false,
     InitialArbOSVersion: 11,
     GenesisBlockNum: 0,
     MaxCodeSize: 24_576,
@@ -33,7 +34,7 @@ export const defaults = {
 export type PrepareChainConfigParams = Pick<ChainConfig, 'chainId'> &
   Partial<Omit<ChainConfig, 'chainId' | 'arbitrum'>> & {
     arbitrum: Pick<ChainConfigArbitrumParams, 'InitialChainOwner'> &
-      Partial<Omit<ChainConfigArbitrumParams, 'InitialChainOwner'>>;
+    Partial<Omit<ChainConfigArbitrumParams, 'InitialChainOwner'>>;
   };
 
 export function prepareChainConfig(params: PrepareChainConfigParams): ChainConfig {
@@ -41,6 +42,6 @@ export function prepareChainConfig(params: PrepareChainConfigParams): ChainConfi
     ...defaults,
     ...params,
     clique: { ...defaults.clique, ...params.clique },
-    arbitrum: { ...defaults.arbitrum, ...params.arbitrum },
+    arbitrum: { ...defaults.arbitrum, ...params.arbitrum } as ChainConfigArbitrumParams,
   };
 }

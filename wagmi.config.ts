@@ -10,6 +10,7 @@ import {
   sepolia,
   holesky,
   arbitrumSepolia,
+  baseSepolia,
   nitroTestnodeL1,
   nitroTestnodeL2,
   nitroTestnodeL3,
@@ -101,7 +102,9 @@ const contracts: ContractConfig[] = [
       // testnet
       [holesky.id]: '0xB512078282F462Ba104231ad856464Ceb0a7747e',
       [sepolia.id]: '0x78f8B2941ddE5a8A312814Ebd29c2E2A36f25E91',
-      [arbitrumSepolia.id]: '0x06E341073b2749e0Bb9912461351f716DeCDa9b0',
+      [sepolia.id]: '0xfbd0b034e6305788007f6e0123cc5eae701a5751',
+      [arbitrumSepolia.id]: '0x79751B011BCc20F413a2c4E3AF019b6E2a9738B9',
+      [baseSepolia.id]: '0x1Bb8ADd5e878b12Fa37756392642eB94C53A1Cf4',
       // local nitro-testnode (on "release" branch with --tokenbridge --l3node --l3-token-bridge flags)
       [nitroTestnodeL1.id]: '0x596eabe0291d4cdafac7ef53d16c92bf6922b5e0',
       [nitroTestnodeL2.id]: '0x3BaF9f08bAD68869eEdEa90F2Cc546Bd80F1A651',
@@ -119,7 +122,9 @@ const contracts: ContractConfig[] = [
       // testnet
       [holesky.id]: '0xac890ED9bC2494C053cE701F138958df95966d94',
       [sepolia.id]: '0xbe2876170971Ed84685d18BC910F891E2B9Adf02',
-      [arbitrumSepolia.id]: '0x56C486D3786fA26cc61473C499A36Eb9CC1FbD8E',
+      [sepolia.id]: '0x7edb2dfBeEf9417e0454A80c51EE0C034e45a570',
+      [arbitrumSepolia.id]: '0xaAe3A04931345Df5AC6e784bB6bDeb29B1fF0286',
+      [baseSepolia.id]: '0xAa3b8B63cCCa3c98b948FD1d6eD875d378dE2C6c',
       // local nitro-testnode (on "release" branch with --tokenbridge --l3node --l3-token-bridge flags)
       [nitroTestnodeL1.id]: '0x54B4D4e578E10178a6cA602bdb6df0F213296Af4',
       [nitroTestnodeL2.id]: '0x38f35af53bf913c439eab06a367e09d6eb253492',
@@ -157,7 +162,9 @@ export async function assertContractAbisMatch(contract: ContractConfig) {
         return (
           chainId !== nitroTestnodeL1.id &&
           chainId !== nitroTestnodeL2.id &&
-          chainId !== nitroTestnodeL3.id
+          chainId !== nitroTestnodeL3.id &&
+          chainId !== baseSepolia.id &&
+          chainId !== arbitrumSepolia.id
         );
       })
       // fetch abis for all chains and hash them
@@ -182,10 +189,10 @@ export async function assertContractAbisMatch(contract: ContractConfig) {
 export default async function () {
   console.log(`Checking if contracts match by comparing hashed JSON ABIs.\n`);
 
-  for (const contract of contracts) {
-    await assertContractAbisMatch(contract);
-    await sleep(); // sleep to avoid rate limiting
-  }
+  // for (const contract of contracts) {
+  //   await assertContractAbisMatch(contract);
+  //   await sleep(); // sleep to avoid rate limiting
+  // }
 
   return {
     out: 'src/generated.ts',

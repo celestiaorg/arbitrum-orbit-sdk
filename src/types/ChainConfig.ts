@@ -4,6 +4,7 @@ export type ChainConfigArbitrumParams = {
   EnableArbOS: boolean;
   AllowDebugPrecompiles: boolean;
   DataAvailabilityCommittee: boolean;
+  CelestiaDA: boolean;
   InitialArbOSVersion: number;
   InitialChainOwner: Address;
   GenesisBlockNum: number;

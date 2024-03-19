@@ -2,7 +2,9 @@ import { NodeConfig } from './types/NodeConfig.generated';
 import {
   NodeConfigChainInfoJson,
   NodeConfigDataAvailabilityRpcAggregatorBackendsJson,
+
 } from './types/NodeConfig';
+import { CelestiaConfig } from './types/CelestiaConfig';
 import { ChainConfig } from './types/ChainConfig';
 import { CoreContracts } from './types/CoreContracts';
 import { ParentChainId, validateParentChain } from './types/ParentChain';
@@ -16,7 +18,9 @@ import {
   nitroTestnodeL1,
   nitroTestnodeL2,
   nitroTestnodeL3,
+  baseSepolia,
 } from './chains';
+import { chai } from 'vitest';
 
 // this is different from `sanitizePrivateKey` from utils, as this removes the 0x prefix
 function sanitizePrivateKey(privateKey: string) {
@@ -40,6 +44,7 @@ function parentChainIsArbitrum(parentChainId: ParentChainId): boolean {
     case sepolia.id:
     case holesky.id:
     case nitroTestnodeL1.id:
+    case baseSepolia.id:
       return false;
 
     case arbitrumOne.id:
@@ -59,7 +64,7 @@ export function prepareNodeConfig({
   validatorPrivateKey,
   parentChainId,
   parentChainRpcUrl,
-  authToken
+  celestiaConfig,
 }: {
   chainName: string;
   chainConfig: ChainConfig;
@@ -68,7 +73,7 @@ export function prepareNodeConfig({
   validatorPrivateKey: string;
   parentChainId: number;
   parentChainRpcUrl: string;
-  authToken?: string;
+  celestiaConfig?: CelestiaConfig;
 }): NodeConfig {
   const config: NodeConfig = {
     'chain': {
@@ -127,13 +132,6 @@ export function prepareNodeConfig({
       },
       'dangerous': {
         'no-sequencer-coordinator': true,
-      },
-      "celestia-cfg": {
-        "enable": true,
-        "rpc": "http://da:26658",
-        "tendermint-rpc": "http://da:26657",
-        "namespace-id": "000008e5f679bf7116cb",
-        "auth-token": authToken || '',
       }
     },
     'execution': {
@@ -171,6 +169,20 @@ export function prepareNodeConfig({
         ]),
       },
     };
+  }
+
+  if (chainConfig.arbitrum.CelestiaDA) {
+    config.node['celestia-cfg'] = {
+      "enable": celestiaConfig!.enable,
+      "rpc": celestiaConfig!.rpc,
+      "tendermint-rpc": celestiaConfig!.tendermint_rpc,
+      "namespace-id": celestiaConfig!.namespace_id,
+      "auth-token": celestiaConfig!.auth_token,
+      "is-poster": celestiaConfig!.is_poster,
+      "gas-price": celestiaConfig!.gas_price,
+      "event-channel-size": celestiaConfig!.event_hannel_size,
+      "blobstreamx-address": celestiaConfig!.blobstreamx_address,
+    }
   }
 
   return config;

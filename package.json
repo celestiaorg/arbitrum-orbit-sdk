@@ -3,7 +3,7 @@
     "src",
     "examples/*"
   ],
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "prebuild": "rm -rf ./src/dist",

@@ -23,7 +23,7 @@ export const defaults = {
     EnableArbOS: true,
     AllowDebugPrecompiles: false,
     DataAvailabilityCommittee: false,
-    CelestiaDa: false,
+    CelestiaDA: false,
     InitialArbOSVersion: 11,
     GenesisBlockNum: 0,
     MaxCodeSize: 24_576,

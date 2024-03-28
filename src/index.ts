@@ -43,6 +43,7 @@ import {
 } from './upgradeExecutor';
 
 import { ChainConfig, ChainConfigArbitrumParams } from './types/ChainConfig';
+import { CelestiaConfig } from './types/CelestiaConfig';
 import { CoreContracts } from './types/CoreContracts';
 import { ParentChain, ParentChainId } from './types/ParentChain';
 import { NodeConfig } from './types/NodeConfig.generated';
@@ -100,6 +101,7 @@ export {
   //
   CoreContracts,
   ChainConfig,
+  CelestiaConfig,
   ChainConfigArbitrumParams,
   ParentChain,
   ParentChainId,

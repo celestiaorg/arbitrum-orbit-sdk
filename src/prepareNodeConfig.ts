@@ -180,7 +180,7 @@ export function prepareNodeConfig({
       "auth-token": celestiaConfig!.auth_token,
       "is-poster": celestiaConfig!.is_poster,
       "gas-price": celestiaConfig!.gas_price,
-      "event-channel-size": celestiaConfig!.event_hannel_size,
+      "event-channel-size": celestiaConfig!.event_channel_size,
       "blobstreamx-address": celestiaConfig!.blobstreamx_address,
     }
   }

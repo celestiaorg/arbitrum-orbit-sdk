@@ -1,7 +1,7 @@
 {
   "name": "celestia-orbit-sdk",
   "description": "TypeScript SDK for building Arbitrum Orbit chains with Celestia Underneath",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "main": "./dist/index.js",
   "files": [
     "./dist"

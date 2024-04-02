@@ -176,6 +176,7 @@ export function prepareNodeConfig({
       "enable": celestiaConfig!.enable,
       "rpc": celestiaConfig!.rpc,
       "tendermint-rpc": celestiaConfig!.tendermint_rpc,
+      "eth-rpc": celestiaConfig!.eth_rpc,
       "namespace-id": celestiaConfig!.namespace_id,
       "auth-token": celestiaConfig!.auth_token,
       "is-poster": celestiaConfig!.is_poster,

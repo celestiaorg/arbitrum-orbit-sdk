@@ -14,8 +14,8 @@ export type CreateRollupPrepareConfigParams = Pick<CreateRollupPrepareConfigResu
   };
 
 const wasmModuleRoot: `0x${string}` =
-  // https://github.com/OffchainLabs/nitro/releases/tag/consensus-v11
-  '0xf4389b835497a910d7ba3ebfb77aa93da985634f3c052de1290360635be40c4a';
+  // https://github.com/celestiaorg/nitro/releases/tag/v2.3.1-rc.1
+  '0x10c65b27d5031ce2351c719072e58f3153228887f027f9f6d65300d2b5b30152';
 
 export const defaults = {
   confirmPeriodBlocks: BigInt(150),
@@ -42,10 +42,10 @@ export function createRollupPrepareConfig({
     ...params,
     chainConfig: JSON.stringify(
       chainConfig ??
-        prepareChainConfig({
-          chainId: Number(params.chainId),
-          arbitrum: { InitialChainOwner: params.owner },
-        }),
+      prepareChainConfig({
+        chainId: Number(params.chainId),
+        arbitrum: { InitialChainOwner: params.owner },
+      }),
     ),
   };
 }

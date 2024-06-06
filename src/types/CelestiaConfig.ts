@@ -1,12 +1,16 @@
 export type CelestiaConfig = {
     enable: boolean;
+    gas_price: number;
+    gas_multiplier: number;
     rpc: string;
-    tendermint_rpc: string;
-    eth_rpc: string;
     namespace_id: string;
     auth_token: string;
-    is_poster: boolean;
-    gas_price: number;
-    event_channel_size: number;
-    blobstreamx_address: string;
+    noop_writer: boolean;
+    validator_config?: CelestiaValidationConfig;
+}
+
+export type CelestiaValidationConfig = {
+    tendermint_rpc: string;
+    eth_rpc: string;
+    blobstream: string;
 }

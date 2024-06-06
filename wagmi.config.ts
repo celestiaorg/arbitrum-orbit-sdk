@@ -107,8 +107,8 @@ const contracts: ContractConfig[] = [
       // testnet
       [holesky.id]: '0xB512078282F462Ba104231ad856464Ceb0a7747e',
       [sepolia.id]: '0x78f8B2941ddE5a8A312814Ebd29c2E2A36f25E91',
-      [arbitrumSepolia.id]: '0x79751B011BCc20F413a2c4E3AF019b6E2a9738B9',
-      [baseSepolia.id]: '0x1Bb8ADd5e878b12Fa37756392642eB94C53A1Cf4',
+      [arbitrumSepolia.id]: '0x1653468Cd5b62399340800968D5DC85c8c65A276',
+      [baseSepolia.id]: '0x51D289Ed6aF0A2D1018AA9214D8cE23510280ad0',
       // local nitro-testnode (on "release" branch with --tokenbridge --l3node --l3-token-bridge flags)
       [nitroTestnodeL1.id]: '0x596eabe0291d4cdafac7ef53d16c92bf6922b5e0',
       [nitroTestnodeL2.id]: '0x3BaF9f08bAD68869eEdEa90F2Cc546Bd80F1A651',

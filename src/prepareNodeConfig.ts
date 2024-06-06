@@ -175,14 +175,11 @@ export function prepareNodeConfig({
     config.node!['celestia-cfg'] = {
       "enable": celestiaConfig!.enable,
       "rpc": celestiaConfig!.rpc,
-      "tendermint-rpc": celestiaConfig!.tendermint_rpc,
-      "eth-rpc": celestiaConfig!.eth_rpc,
       "namespace-id": celestiaConfig!.namespace_id,
       "auth-token": celestiaConfig!.auth_token,
-      "is-poster": celestiaConfig!.is_poster,
       "gas-price": celestiaConfig!.gas_price,
-      "event-channel-size": celestiaConfig!.event_channel_size,
-      "blobstreamx-address": celestiaConfig!.blobstreamx_address,
+      "gas-multiplier": celestiaConfig!.gas_multiplier,
+      "validator-config": celestiaConfig!.validator_config
     }
   }
 

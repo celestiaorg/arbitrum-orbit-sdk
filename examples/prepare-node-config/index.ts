@@ -61,7 +61,6 @@ async function main() {
     validatorPrivateKey: process.env.VALIDATOR_PRIVATE_KEY as `0x${string}`,
     parentChainId: parentChain.id,
     parentChainRpcUrl: getRpcUrl(parentChain),
-    authToken: ''
   });
 
   await writeFile('node-config.json', JSON.stringify(nodeConfig, null, 2));

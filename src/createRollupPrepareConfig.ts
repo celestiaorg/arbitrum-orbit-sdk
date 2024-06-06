@@ -14,8 +14,8 @@ export type CreateRollupPrepareConfigParams = Pick<CreateRollupPrepareConfigResu
   };
 
 const wasmModuleRoot: `0x${string}` =
-  // https://github.com/celestiaorg/nitro/releases/tag/v2.3.1-rc.1
-  '0x10c65b27d5031ce2351c719072e58f3153228887f027f9f6d65300d2b5b30152';
+  // https://github.com/celestiaorg/nitro/releases/tag/v2.3.3
+  '0x9286b47ebb3f668fbba011c0e541655a7ecc833032154bba0d8d5ce4f2411f2a';
 
 export const defaults = {
   confirmPeriodBlocks: BigInt(150),

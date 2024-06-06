@@ -19,8 +19,8 @@ function getNitroNodeImageTag(): string {
 }
 
 // const nitroNodeTag = getNitroNodeImageTag();
-const nitroNodeImage = 'dfcelestia/nitro-node-dev:latest';
-const nitroNodeHelpOutputFile = `${nitroNodeImage.replace('/', '-')}-help.txt`;
+const nitroNodeImage = 'ghcr.io/celestiaorg/nitro:v2.3.3';
+const nitroNodeHelpOutputFile = `ghcr.io-celestiaorg-nitro:v2.3.3-help.txt`;
 
 console.log(`Using image "${nitroNodeImage}".`);
 

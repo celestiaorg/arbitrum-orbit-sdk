@@ -85,6 +85,20 @@ export const arbOwnerABI = [
   {
     stateMutability: 'nonpayable',
     type: 'function',
+    inputs: [{ name: 'level', internalType: 'uint64', type: 'uint64' }],
+    name: 'setBrotliCompressionLevel',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [{ name: 'chainConfig', internalType: 'string', type: 'string' }],
+    name: 'setChainConfig',
+    outputs: [],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
     inputs: [{ name: 'newInfraFeeAccount', internalType: 'address', type: 'address' }],
     name: 'setInfraFeeAccount',
     outputs: [],
@@ -210,11 +224,24 @@ export const arbOwnerConfig = { address: arbOwnerAddress, abi: arbOwnerABI } as 
  */
 export const arbOwnerPublicABI = [
   {
+    type: 'event',
+    anonymous: false,
+    inputs: [{ name: 'rectifiedOwner', internalType: 'address', type: 'address', indexed: false }],
+    name: 'ChainOwnerRectified',
+  },
+  {
     stateMutability: 'view',
     type: 'function',
     inputs: [],
     name: 'getAllChainOwners',
     outputs: [{ name: '', internalType: 'address[]', type: 'address[]' }],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
+    inputs: [],
+    name: 'getBrotliCompressionLevel',
+    outputs: [{ name: '', internalType: 'uint64', type: 'uint64' }],
   },
   {
     stateMutability: 'view',
@@ -233,9 +260,26 @@ export const arbOwnerPublicABI = [
   {
     stateMutability: 'view',
     type: 'function',
+    inputs: [],
+    name: 'getScheduledUpgrade',
+    outputs: [
+      { name: 'arbosVersion', internalType: 'uint64', type: 'uint64' },
+      { name: 'scheduledForTimestamp', internalType: 'uint64', type: 'uint64' },
+    ],
+  },
+  {
+    stateMutability: 'view',
+    type: 'function',
     inputs: [{ name: 'addr', internalType: 'address', type: 'address' }],
     name: 'isChainOwner',
     outputs: [{ name: '', internalType: 'bool', type: 'bool' }],
+  },
+  {
+    stateMutability: 'nonpayable',
+    type: 'function',
+    inputs: [{ name: 'ownerToRectify', internalType: 'address', type: 'address' }],
+    name: 'rectifyChainOwner',
+    outputs: [],
   },
 ] as const;
 
@@ -385,8 +429,8 @@ export const erc20ABI = [
  * -
  * - [__View Contract on Arbitrum One Arbiscan__](https://arbiscan.io/address/0x9CAd81628aB7D8e239F1A5B497313341578c5F71)
  * - [__View Contract on Arbitrum Nova Arbiscan__](https://nova.arbiscan.io/address/0x9CAd81628aB7D8e239F1A5B497313341578c5F71)
- * - [__View Contract on Base Sepolia Blockscout__](https://base-sepolia.blockscout.com/address/0x1Bb8ADd5e878b12Fa37756392642eB94C53A1Cf4)
- * - [__View Contract on Arbitrum Sepolia Blockscout__](https://sepolia-explorer.arbitrum.io/address/0x79751B011BCc20F413a2c4E3AF019b6E2a9738B9)
+ * - [__View Contract on Base Sepolia Blockscout__](https://base-sepolia.blockscout.com/address/0x51D289Ed6aF0A2D1018AA9214D8cE23510280ad0)
+ * - [__View Contract on Arbitrum Sepolia Blockscout__](https://sepolia-explorer.arbitrum.io/address/0x1653468Cd5b62399340800968D5DC85c8c65A276)
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x78f8B2941ddE5a8A312814Ebd29c2E2A36f25E91)
  */
 export const rollupCreatorABI = [
@@ -584,8 +628,8 @@ export const rollupCreatorABI = [
  * -
  * - [__View Contract on Arbitrum One Arbiscan__](https://arbiscan.io/address/0x9CAd81628aB7D8e239F1A5B497313341578c5F71)
  * - [__View Contract on Arbitrum Nova Arbiscan__](https://nova.arbiscan.io/address/0x9CAd81628aB7D8e239F1A5B497313341578c5F71)
- * - [__View Contract on Base Sepolia Blockscout__](https://base-sepolia.blockscout.com/address/0x1Bb8ADd5e878b12Fa37756392642eB94C53A1Cf4)
- * - [__View Contract on Arbitrum Sepolia Blockscout__](https://sepolia-explorer.arbitrum.io/address/0x79751B011BCc20F413a2c4E3AF019b6E2a9738B9)
+ * - [__View Contract on Base Sepolia Blockscout__](https://base-sepolia.blockscout.com/address/0x51D289Ed6aF0A2D1018AA9214D8cE23510280ad0)
+ * - [__View Contract on Arbitrum Sepolia Blockscout__](https://sepolia-explorer.arbitrum.io/address/0x1653468Cd5b62399340800968D5DC85c8c65A276)
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x78f8B2941ddE5a8A312814Ebd29c2E2A36f25E91)
  */
 export const rollupCreatorAddress = {
@@ -594,10 +638,10 @@ export const rollupCreatorAddress = {
   17000: '0xB512078282F462Ba104231ad856464Ceb0a7747e',
   42161: '0x9CAd81628aB7D8e239F1A5B497313341578c5F71',
   42170: '0x9CAd81628aB7D8e239F1A5B497313341578c5F71',
-  84532: '0x1Bb8ADd5e878b12Fa37756392642eB94C53A1Cf4',
+  84532: '0x51D289Ed6aF0A2D1018AA9214D8cE23510280ad0',
   333333: '0x0000000000000000000000000000000000000000',
   412346: '0x3BaF9f08bAD68869eEdEa90F2Cc546Bd80F1A651',
-  421614: '0x79751B011BCc20F413a2c4E3AF019b6E2a9738B9',
+  421614: '0x1653468Cd5b62399340800968D5DC85c8c65A276',
   11155111: '0x78f8B2941ddE5a8A312814Ebd29c2E2A36f25E91',
 } as const;
 
@@ -607,8 +651,8 @@ export const rollupCreatorAddress = {
  * -
  * - [__View Contract on Arbitrum One Arbiscan__](https://arbiscan.io/address/0x9CAd81628aB7D8e239F1A5B497313341578c5F71)
  * - [__View Contract on Arbitrum Nova Arbiscan__](https://nova.arbiscan.io/address/0x9CAd81628aB7D8e239F1A5B497313341578c5F71)
- * - [__View Contract on Base Sepolia Blockscout__](https://base-sepolia.blockscout.com/address/0x1Bb8ADd5e878b12Fa37756392642eB94C53A1Cf4)
- * - [__View Contract on Arbitrum Sepolia Blockscout__](https://sepolia-explorer.arbitrum.io/address/0x79751B011BCc20F413a2c4E3AF019b6E2a9738B9)
+ * - [__View Contract on Base Sepolia Blockscout__](https://base-sepolia.blockscout.com/address/0x51D289Ed6aF0A2D1018AA9214D8cE23510280ad0)
+ * - [__View Contract on Arbitrum Sepolia Blockscout__](https://sepolia-explorer.arbitrum.io/address/0x1653468Cd5b62399340800968D5DC85c8c65A276)
  * - [__View Contract on Sepolia Etherscan__](https://sepolia.etherscan.io/address/0x78f8B2941ddE5a8A312814Ebd29c2E2A36f25E91)
  */
 export const rollupCreatorConfig = {
